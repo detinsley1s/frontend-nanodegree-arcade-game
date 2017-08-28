@@ -22,6 +22,17 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x += this.speed * dt;
+
+    // Cycle the sprites back to the left once they leave the
+    // right side of the screen, so that there is no need to destroy
+    // them and instantiate new sprites
+    // Also, change their speeds to add variety
+    if(this.x > 505) {
+        this.x = -100;
+        this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
+        this.speed = Math.floor(Math.random() * 700) + 100;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
