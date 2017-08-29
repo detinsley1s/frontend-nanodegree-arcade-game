@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-let Enemy = function() {
+let Enemy = function(player) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -14,6 +14,8 @@ let Enemy = function() {
 
     // The enemy sprite's speed chosen randomly from 100 to 799
     this.speed = Math.floor(Math.random() * 700) + 100;
+
+    this.player = player;
 };
 
 // Update the enemy's position, required method for game
@@ -33,11 +35,22 @@ Enemy.prototype.update = function(dt) {
         this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
         this.speed = Math.floor(Math.random() * 700) + 100;
     }
+
+    // Check for collision with player
+    this.checkForCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Check if an enemy has collided with the Player
+Enemy.prototype.checkForCollisions = function() {
+    if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 5 && this.x <= this.player.x + 5) {
+        this.player.x = 202;
+        this.player.y = 385;
+    }
 };
 
 // Now write your own player class
@@ -101,15 +114,15 @@ Player.prototype.handleInput = function(input) {
     }
 };
 
+let player = new Player();
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
 for(let i = 0; i < 3; ++i) {
-    allEnemies.push(new Enemy());
+    allEnemies.push(new Enemy(player));
 }
-
-let player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
