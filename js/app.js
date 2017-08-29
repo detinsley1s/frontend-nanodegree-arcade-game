@@ -65,6 +65,42 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
+// Process the player's keyboard input to move
+// the player's sprite on the screen
+Player.prototype.handleInput = function(input) {
+    switch(input) {
+        case 'left':
+            // Prevents from moving off screen
+            if(this.x > 0) {
+                this.x -= 101;
+            }
+            break;
+        case 'right':
+            // Prevents from moving off screen
+            if(this.x < 404) {
+                this.x += 101;
+            }
+            break;
+        case 'up':
+            this.y -= 81;
+
+            // If the player reaches the water
+            if(this.y < 0) {
+                this.y = 385;
+                this.x = 202;
+            }
+            break;
+        case 'down':
+            // Prevents from moving off screen
+            if(this.y < 385) {
+                this.y += 81;
+            }
+            break;
+        default:
+            break;
+    }
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
