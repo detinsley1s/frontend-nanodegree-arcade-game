@@ -7,13 +7,8 @@ let Enemy = function(player) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
-    // The coordinates of the enemy sprite
-    // Y coord is chosen randomly from the array
-    this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
-    this.x = -100;
-
-    // The enemy sprite's speed chosen randomly from 100 to 799
-    this.speed = Math.floor(Math.random() * 700) + 100;
+    // Initialize coordinates and speed of the enemy sprite
+    this.resetLocationAndSpeed();
 
     // Reference to the player instance
     this.player = player;
@@ -32,9 +27,7 @@ Enemy.prototype.update = function(dt) {
     // them and instantiate new sprites
     // Also, change their speeds to add variety
     if(this.x > 505) {
-        this.x = -100;
-        this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
-        this.speed = Math.floor(Math.random() * 700) + 100;
+        this.resetLocationAndSpeed();
     }
 
     // Check for collision with player
@@ -52,6 +45,13 @@ Enemy.prototype.checkForCollisions = function() {
         this.player.x = 202;
         this.player.y = 385;
     }
+};
+
+// Places the enemy at a random row with a random speed
+Enemy.prototype.resetLocationAndSpeed = function() {
+    this.x = -100;
+    this.y = [60, 143, 226][Math.floor(Math.random() * 3)];
+    this.speed = Math.floor(Math.random() * 700) + 100;
 };
 
 // Now write your own player class
