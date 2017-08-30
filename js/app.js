@@ -91,7 +91,7 @@ Player.prototype.update = function(dt) {
 
 // Initializes the location of the sprite at the beginning of game
 // and does required tasks for gameplay once player reaches the water
-Player.prototype.reset = function() {
+Player.prototype.reachedWater = function() {
     if(this.y < 0) {
         this.y = 385;
         this.x = 202;
@@ -118,7 +118,7 @@ Player.prototype.handleInput = function(input) {
             this.y -= 81;
 
             // If the player reaches the water
-            this.reset();
+            this.reachedWater();
             break;
         case 'down':
             // Prevents from moving off screen
