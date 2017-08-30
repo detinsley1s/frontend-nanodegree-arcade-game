@@ -65,15 +65,14 @@ let Player = function() {
                     'images/char-pink-girl.png',
                     'images/char-princess-girl.png'];
 
-    // index of player's sprite
+    // index of player's sprite in the sprites array
     this.sprite_idx = 0;
 
     // The image/sprite for the player
     this.sprite = this.sprites[this.sprite_idx];
 
-    // The coordinates of the player sprite
-    this.y = 385;
-    this.x = 202;
+    // Initializes the location of the player's sprite
+    this.reset;
 };
 
 // Draw the player on the screen, required method for game
@@ -89,6 +88,8 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
+// Initializes the location of the sprite at the beginning of game
+// and does required tasks for gameplay once player reaches the water
 Player.prototype.reset = function() {
     if(this.y < 0) {
         this.y = 385;
