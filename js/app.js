@@ -42,8 +42,7 @@ Enemy.prototype.render = function() {
 // Check if an enemy has collided with the Player
 Enemy.prototype.checkForCollisions = function() {
     if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 5 && this.x <= this.player.x + 5) {
-        this.player.x = 202;
-        this.player.y = 385;
+        this.player.reset();
     }
 };
 
@@ -72,8 +71,7 @@ let Player = function() {
     this.sprite = this.sprites[this.sprite_idx];
 
     // Initializes the location of the player's sprite
-    this.y = 385;
-    this.x = 202;
+    this.reset();
 };
 
 // Draw the player on the screen, required method for game
@@ -89,13 +87,17 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
-// Initializes the location of the sprite at the beginning of game
-// and does required tasks for gameplay once player reaches the water
+// Does required tasks for gameplay once player reaches the water
 Player.prototype.reachedWater = function() {
     if(this.y < 0) {
-        this.y = 385;
-        this.x = 202;
+        this.reset();
     }
+};
+
+// Resets the player sprite to its starting location
+Player.prototype.reset = function() {
+    this.y = 385;
+    this.x = 202;
 };
 
 // Process the player's keyboard input to move
@@ -139,6 +141,7 @@ Player.prototype.handleInput = function(input) {
     }
 };
 
+// Instantiate the player
 let player = new Player();
 
 // Now instantiate your objects.
