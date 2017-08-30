@@ -72,7 +72,8 @@ let Player = function() {
     this.sprite = this.sprites[this.sprite_idx];
 
     // Initializes the location of the player's sprite
-    this.reset;
+    this.y = 385;
+    this.x = 202;
 };
 
 // Draw the player on the screen, required method for game
