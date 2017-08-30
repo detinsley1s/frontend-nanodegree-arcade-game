@@ -15,6 +15,7 @@ let Enemy = function(player) {
     // The enemy sprite's speed chosen randomly from 100 to 799
     this.speed = Math.floor(Math.random() * 700) + 100;
 
+    // Reference to the player instance
     this.player = player;
 };
 
@@ -57,8 +58,18 @@ Enemy.prototype.checkForCollisions = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 let Player = function() {
+    // array of possible character sprites
+    this.sprites = ['images/char-boy.png',
+                    'images/char-cat-girl.png',
+                    'images/char-horn-girl.png',
+                    'images/char-pink-girl.png',
+                    'images/char-princess-girl.png'];
+
+    // index of player's sprite
+    this.sprite_idx = 0;
+
     // The image/sprite for the player
-    this.sprite = 'images/char-boy.png';
+    this.sprite = this.sprites[this.sprite_idx];
 
     // The coordinates of the player sprite
     this.y = 385;
@@ -109,6 +120,11 @@ Player.prototype.handleInput = function(input) {
                 this.y += 81;
             }
             break;
+        case 'ctrl':
+            // changes character sprite
+            this.sprite_idx = (this.sprite_idx + 1) % 5;
+            this.sprite = this.sprites[this.sprite_idx];
+            break;
         default:
             break;
     }
@@ -128,6 +144,7 @@ for(let i = 0; i < 3; ++i) {
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
     let allowedKeys = {
+        17: 'ctrl',
         37: 'left',
         38: 'up',
         39: 'right',
