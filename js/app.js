@@ -122,7 +122,10 @@ Player.prototype.handleInput = function(input) {
             break;
         case 'ctrl':
             // changes character sprite
-            this.sprite_idx = (this.sprite_idx + 1) % 5;
+            // uses modulus on the sprites array's length as
+            // insurance to prevent indexing errors in case
+            // the array is lengthened or shortened in the future
+            this.sprite_idx = (this.sprite_idx + 1) % this.sprites.length;
             this.sprite = this.sprites[this.sprite_idx];
             break;
         default:
