@@ -89,6 +89,13 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
+Player.prototype.reachedWater = function() {
+    if(this.y < 0) {
+        this.y = 385;
+        this.x = 202;
+    }
+};
+
 // Process the player's keyboard input to move
 // the player's sprite on the screen
 Player.prototype.handleInput = function(input) {
@@ -109,10 +116,7 @@ Player.prototype.handleInput = function(input) {
             this.y -= 81;
 
             // If the player reaches the water
-            if(this.y < 0) {
-                this.y = 385;
-                this.x = 202;
-            }
+            this.reachedWater();
             break;
         case 'down':
             // Prevents from moving off screen
