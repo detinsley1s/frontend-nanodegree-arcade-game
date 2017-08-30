@@ -89,7 +89,7 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
-Player.prototype.reachedWater = function() {
+Player.prototype.reset = function() {
     if(this.y < 0) {
         this.y = 385;
         this.x = 202;
@@ -116,7 +116,7 @@ Player.prototype.handleInput = function(input) {
             this.y -= 81;
 
             // If the player reaches the water
-            this.reachedWater();
+            this.reset();
             break;
         case 'down':
             // Prevents from moving off screen
