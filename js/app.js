@@ -41,7 +41,7 @@ Enemy.prototype.render = function() {
 
 // Check if an enemy has collided with the Player
 Enemy.prototype.checkForCollisions = function() {
-    if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 50 && this.x <= this.player.x + 50) {
+    if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 50 && this.x <= this.player.x + 30) {
         this.player.reset();
         this.player.lives--;
         if(this.player.lives === 0) {
