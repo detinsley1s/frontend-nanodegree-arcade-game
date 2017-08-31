@@ -108,6 +108,9 @@ Player.prototype.reachedWater = function() {
     if(this.y < 0) {
         this.reset();
         this.score++;
+        if(this.score % 10 === 0) {
+            this.lives++;
+        }
     }
 };
 
