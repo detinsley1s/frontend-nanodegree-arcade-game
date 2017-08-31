@@ -79,11 +79,20 @@ let Player = function() {
 
     // Initialize the game attributes
     this.resetGame();
+    this.highScore = 0;
 };
 
 // Draw the player on the screen, required method for game
+// Display lives, score, etc. on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.font = "30px Arial";
+    ctx.clearRect(105, 0, 25, 40);
+    ctx.clearRect(285, 0, 45, 40);
+    ctx.clearRect(460, 0, 45, 40);
+    ctx.fillText("Lives: " + this.lives, 20, 40);
+    ctx.fillText("Score: " + this.score, 195, 40);
+    ctx.fillText("High: " + this.highScore, 385, 40);
 };
 
 // Update the player's position, required method for game
@@ -110,6 +119,9 @@ Player.prototype.reset = function() {
 
 // Resets the lives, score, etc.
 Player.prototype.resetGame = function() {
+    if(this.score > this.highScore) {
+        this.highScore = this.score;
+    }
     this.score = 0;
     this.lives = 3;
 };
