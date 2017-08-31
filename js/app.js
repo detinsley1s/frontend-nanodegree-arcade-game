@@ -41,7 +41,7 @@ Enemy.prototype.render = function() {
 
 // Check if an enemy has collided with the Player
 Enemy.prototype.checkForCollisions = function() {
-    if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 5 && this.x <= this.player.x + 5) {
+    if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 50 && this.x <= this.player.x + 50) {
         this.player.reset();
         this.player.lives--;
         if(this.player.lives === 0) {
@@ -118,6 +118,7 @@ Player.prototype.reset = function() {
 };
 
 // Resets the lives, score, etc.
+// Saves the session's high score
 Player.prototype.resetGame = function() {
     if(this.score > this.highScore) {
         this.highScore = this.score;
