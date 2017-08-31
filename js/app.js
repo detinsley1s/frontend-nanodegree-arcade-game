@@ -43,6 +43,10 @@ Enemy.prototype.render = function() {
 Enemy.prototype.checkForCollisions = function() {
     if(this.y >= this.player.y - 3 && this.y <= this.player.y + 3 && this.x >= this.player.x - 5 && this.x <= this.player.x + 5) {
         this.player.reset();
+        this.player.lives--;
+        if(this.player.lives === 0) {
+            this.player.resetGame();
+        }
     }
 };
 
@@ -72,6 +76,9 @@ let Player = function() {
 
     // Initializes the location of the player's sprite
     this.reset();
+
+    // Initialize the game attributes
+    this.resetGame();
 };
 
 // Draw the player on the screen, required method for game
@@ -91,6 +98,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.reachedWater = function() {
     if(this.y < 0) {
         this.reset();
+        this.score++;
     }
 };
 
@@ -98,6 +106,12 @@ Player.prototype.reachedWater = function() {
 Player.prototype.reset = function() {
     this.y = 385;
     this.x = 202;
+};
+
+// Resets the lives, score, etc.
+Player.prototype.resetGame = function() {
+    this.score = 0;
+    this.lives = 3;
 };
 
 // Process the player's keyboard input to move
