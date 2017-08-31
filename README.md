@@ -1,6 +1,16 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+To start the game, the user needs to load up the webpage, then the game immediately begins. The goal is to move the player's character up the screen to enter the water, without touching any of the insectile enemies. If the player does reaches the water, then his/her score increases by one point and he/she resets back to the starting block to try again. Every 10 points earns another extra life in addition to the player's initial total of three to start the game. If the player gets hit by an enemy, then his/her lives decrement by one and the player's position resets. If the total lives hit zero, then the game is over and the player's score is recorded as the high score, if applicable. A new game then starts with three lives and no score.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Keyboard Controls
+
+**Up key:** Character moves up
+
+**Down key:** Character goes down
+
+**Left key:** Character goes left
+
+**Right key:** Character goes right
+
+**Ctrl key:** Change character's sprite
