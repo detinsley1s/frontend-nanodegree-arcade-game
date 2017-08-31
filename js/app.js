@@ -62,11 +62,13 @@ Enemy.prototype.reset = function() {
 // a handleInput() method.
 let Player = function() {
     // array of possible character sprites
-    this.sprites = ['images/char-boy.png',
-                    'images/char-cat-girl.png',
-                    'images/char-horn-girl.png',
-                    'images/char-pink-girl.png',
-                    'images/char-princess-girl.png'];
+    this.sprites = [
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'
+    ];
 
     // index of player's sprite in the sprites array
     this.sprite_idx = 0;
@@ -86,13 +88,13 @@ let Player = function() {
 // Display lives, score, etc. on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.font = "30px Arial";
+    ctx.font = '30px Arial';
     ctx.clearRect(105, 0, 25, 40);
     ctx.clearRect(285, 0, 45, 40);
     ctx.clearRect(460, 0, 45, 40);
-    ctx.fillText("Lives: " + this.lives, 20, 40);
-    ctx.fillText("Score: " + this.score, 195, 40);
-    ctx.fillText("High: " + this.highScore, 385, 40);
+    ctx.fillText('Lives: ' + this.lives, 20, 40);
+    ctx.fillText('Score: ' + this.score, 195, 40);
+    ctx.fillText('High: ' + this.highScore, 385, 40);
 };
 
 // Update the player's position, required method for game
