@@ -108,6 +108,7 @@ Player.prototype.reachedWater = function() {
     if(this.y < 0) {
         this.reset();
         this.score++;
+        // Add extra life for every 10 points
         if(this.score % 10 === 0) {
             this.lives++;
         }
